@@ -1,1 +1,1 @@
-+ mayaScanner 0.0.1 .
++ mayaScanner 1.0.3 .
