@@ -1,5 +1,10 @@
 # Maya security tools - module
-rehost of Maya security tools 1.0.3 - a.k.a. MayaScanner https://apps.autodesk.com/MAYA/en/Detail/Index?id=8637238041954239715&os=Win64&appLang=en
+Rehost of Maya security tools 1.0.3 - a.k.a. MayaScanner  
+Released as a module instead of an installer for easier in-house distribution.
+
+original https://apps.autodesk.com/MAYA/en/Detail/Index?id=8637238041954239715&os=Win64&appLang=en
+
+Author `Autodesk, Inc`
 
 1. Install the maya security tools.
 2. After installation, load the plugin in Maya.

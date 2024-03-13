@@ -1,0 +1,44 @@
+
+// Scan setup File menu entries
+
+string $gScanMenuVariable = "";
+
+global proc ScanSceneFile()
+{   
+    // launch file browser to load/scan/save scene file    
+    python("maya.cmds.MayaScan(scanType=1)");
+}
+global proc ScanSceneNow()
+{
+    // scan current scene file, userSetup.mel.  does not save scene file after
+    python("maya.cmds.MayaScan()");
+}
+
+// create File menu items for scanner
+//
+global proc string AddScanMenuItems()
+{
+    // Global variable to hold the test to see if the menu is populated.
+    global string $gMainFileMenu;
+
+    // if we haven't created the menu items do it now
+    if( ! `menuItem -ex ScanMenuDiv` ) 
+    {
+        menuItem -divider true -insertAfter setProjectFileItem -dividerLabel "Scan" -parent $gMainFileMenu  ScanMenuDiv;
+        menuItem -label "Scan File..." -insertAfter ScanMenuDiv -parent $gMainFileMenu -command "ScanSceneFile" ScanMenuFile;
+        menuItem -label "Scan Current Scene" -insertAfter ScanMenuFile -parent $gMainFileMenu -command "ScanSceneNow" ScanMenuScene;
+    }
+    return "RemoveScanMenuItems"; // Returns the callback
+}
+
+// remove File scanner menu items when unloaded
+//
+global proc RemoveScanMenuItems()
+{
+    if( `menuItem -ex ScanMenuDiv` ) 
+    {
+        if(`menuItem -ex ScanMenuDiv`) deleteUI -mi ScanMenuDiv;
+        if(`menuItem -ex ScanMenuFile`) deleteUI -mi ScanMenuFile;
+        if(`menuItem -ex ScanMenuScene`) deleteUI -mi ScanMenuScene;
+    }
+}
