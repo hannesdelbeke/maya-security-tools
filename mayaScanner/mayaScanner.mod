@@ -1,1 +1,1 @@
-+ myModule 0.0.1 .
++ mayaScanner 0.0.1 .
